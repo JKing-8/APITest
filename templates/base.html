@@ -21,7 +21,7 @@
 
 
 <div class="page-wrapper">
-{% block page-wrapper %}
+    {% block page-wrapper %}
             <nav id="sidebar" class="sidebar-wrapper">
               <div class="sidebar-content">
                 <a href="#" id="toggle-sidebar"><i class="fa fa-bars"></i></a>
@@ -111,10 +111,13 @@
                     <a href="#"><i class="fa fa-power-off"></i></a>
                 </div>
             </nav><!-- sidebar-wrapper  -->
+         {% endblock page-wrapper %}
+        {% block content %}
 
-            {% endblock %}
+        {% endblock %}
 
                 </div>
+
 <!-- page-wrapper -->
 
 
