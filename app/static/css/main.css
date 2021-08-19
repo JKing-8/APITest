@@ -1,0 +1,15 @@
+.logo{
+    color: darkgreen;
+    background: linear-gradient(to right, #d54f8c, #1178b7,#d54f8c,#1178b7);
+    text-align: center;
+    height: 50px;
+    font-family: 'Pacifico', cursive;
+    margin: 0;
+}
+.navigation{
+    margin: 100px auto;
+    width: 200px;
+    text-align: left;
+}
+.navigation h3{color: #d54f8c}
+

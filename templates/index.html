@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    {% load static %}
+{#    <link rel="stylesheet" href="{% static 'css/main.css' %}">#}
+
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/htmleaf-demo.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/jquery.mCustomScrollbar.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+            {% block page-wrapper %}
+
+            {% endblock %}
+
+
+<!-- page-wrapper -->
+                <h1 class="logo">The Gobi Old King test bench</h1>
+                    <div class="navigation">
+                        <h3><i>如何使用:</i></h3>
+                            <p>1、打开左侧菜单栏</p>
+                            <p>2、找到所需功能</p>
+                            <p>3、点击进入</p>
+                        <div class="update-data">
+                            <h3>今日更新：</h3>
+                            <p>1、首页信息</p>
+                        </div>
+
+                        <div class="feedback">
+                            <h3>反馈信息：</h3>
+                            <p>如有问题，请联系作者！</p>
+                            <p>邮箱：lazy2000person@gmail.com</p>
+                        </div>
+                    </div>
+
+	<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write("<script src='{% static "js/jquery-1.11.0.min.js" %}'><\/script>")</script>
+	<script src="{% static 'assets/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>
