@@ -19,5 +19,6 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('^$', views.home, name='home')
+    re_path('^$', views.home, name='home'),
+    path('login/', views.login, name='login'),
 ]
