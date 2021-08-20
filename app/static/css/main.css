@@ -13,3 +13,23 @@
 }
 .navigation h3{color: #d54f8c}
 
+.login-info{
+    margin: auto;
+    /*width: 30%;*/
+    color: yellow;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-info form{
+    width: 26%;
+}
+.login-info form .btn-primary{
+    margin: 0 auto;
+    display: block;
+}
+.login-info .register{
+    width: 60px;
+    margin: 0 auto;
+}

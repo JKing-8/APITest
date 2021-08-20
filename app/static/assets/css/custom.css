@@ -12,11 +12,12 @@
 /*----------------page-wrapper----------------*/
 .page-wrapper{
     height: 100vh;
+    background: url("../img/beijing.jpg");
 }
 
 /*----------------toggeled sidebar----------------*/
 .page-wrapper.toggled .sidebar-wrapper{
-    left:0px;
+    left:0;
 }
 @media screen and (min-width: 768px) {
     .page-wrapper.toggled .page-content{
@@ -39,7 +40,6 @@
     top: 0;
     left: -300px;
 }
-
 
 
 .sidebar-wrapper ul li:hover a i,

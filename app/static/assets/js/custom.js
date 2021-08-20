@@ -19,7 +19,6 @@
                 ]
                 var isMenuWrapper = !!$('#sidebar').find($(e.target)).length
 
-debugger
                 if(!isMenuWrapper && !filterList.find(item => item.get(0) === e.target) && $('.page-wrapper').attr("class").split(' ').includes('toggled')) {
                      $(".page-wrapper").toggleClass("toggled");
                 }
