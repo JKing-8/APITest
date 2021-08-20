@@ -8,9 +8,12 @@ from django.contrib import auth
 
 # Create your views here.
 
-@login_required
+@login_required(login_url='/login')
 def home(request):
-    return render(request, 'index.html', {'name': 'Jun'})
+    # if request.user.is_authenticated:
+    return render(request, 'index.html', {'user': User.username})
+    # else:
+    #     return redirect('/login')
 
 
 def login_user(request):
@@ -34,8 +37,13 @@ def register_user(request):
         try:
             User.objects.create_user(username=username, password=passwd)
             User.save()
-            return HttpResponse('<script>注册成功</script>')
+            return HttpResponse('<script>alert(注册成功)</script>')
         except:
-            return HttpResponse('<script>注册失败，用户名可能重复了！</script>')
+            return HttpResponse('<script>alert(注册失败，用户名可能重复了！）</script>')
     else:
         return redirect('/login')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/login')

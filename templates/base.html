@@ -95,11 +95,11 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu"><span>Simple menu</span></li>
-                        <li><a href="#"><i class="fa fa-tv"></i><span>Menu 1</span></a></li>
-                        <li><a href="#"><i class="fa fa-photo"></i><span>Menu 2</span></a></li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o"></i><span>Menu 3</span></a></li>
-                        <li><a href="#"><i class="fa fa-diamond"></i><span>Menu 4</span></a></li>
+                        <li class="header-menu"><span>导航菜单</span></li>
+                        <li><a href="#"><i class="fa fa-tv"></i><span>项目列表</span></a></li>
+                        <li><a href="#"><i class="fa fa-photo"></i><span>接口调试</span></a></li>
+                        <li><a href="#"><i class="fa fa-bar-chart-o"></i><span>帮助</span></a></li>
+                        <li><a href="/admin" target="_blank"><i class="fa fa-diamond"></i><span>后台</span></a></li>
                     </ul>
                    </div><!-- sidebar-menu  -->
                 </div><!-- sidebar-content  -->
@@ -111,12 +111,23 @@
                     <a href="#"><i class="fa fa-power-off"></i></a>
                 </div>
             </nav><!-- sidebar-wrapper  -->
-         <h1 class="logo">The Gobi Old King test bench</h1>
+    {% block head-style %}
+        <div class="logo">
+             <h1>The Gobi Old King test bench</h1>
+            <div class="login-status" style="color: red;float: right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                </svg>
+                    <a href="{% url 'home' %}">主页</a>
+                    <a href="{% url 'logout' %}">退出</a>
+            </div>
+        </div>
+    {% endblock %}
+
         {% block content %}
 
-            <div >
 
-            </div>
         {% endblock content %}
 
                 </div>

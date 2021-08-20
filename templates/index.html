@@ -11,21 +11,13 @@
 <body>
     {% block content %}
         <div class="navigation">
-            <h3><i>如何使用:</i></h3>
-                <p>1、打开左侧菜单栏</p>
-                <p>2、找到所需功能</p>
-                <p>3、点击进入</p>
-            <div class="update-data">
-                <h3>今日更新：</h3>
-                <p>1、首页信息</p>
-            </div>
+            <h1>欢迎{{ username }}</h1>
+            <textarea style="background: transparent" name="feedback" id="feedback" cols="30" rows="10">
 
-            <div class="feedback">
-                <h3>反馈信息：</h3>
-                <p>如有问题，请联系作者！</p>
-                <p>邮箱：lazy2000person@gmail.com</p>
-            </div>
-                    </div>
+            </textarea>
+        <button type="button" class="btn btn-primary">提交意见</button>
+        </div>
     {% endblock %}
+
 </body>
 </html>
