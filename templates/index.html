@@ -15,9 +15,15 @@
             <textarea style="background: transparent" name="feedback" id="feedback" cols="30" rows="10">
 
             </textarea>
-        <button type="button" class="btn btn-primary">提交意见</button>
+        <button type="button" class="btn btn-primary" id="feedback_submit">提交意见</button>
         </div>
     {% endblock %}
+    <script>
+        $("#feedback_submit").click(function () {
+            inner_info = $('#feedback').innerText()
 
+            htmlobj=$.ajax({method:'get',url:"/feedback",async:false});
+        })
+    </script>
 </body>
 </html>

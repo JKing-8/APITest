@@ -18,6 +18,9 @@
     text-align: left;
 }
 .navigation h3{color: #d54f8c}
+.navigation .navigation{
+
+}
 
 .login-info{
     margin: auto;
