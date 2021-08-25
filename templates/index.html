@@ -6,24 +6,31 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
     <title>Document</title>
 </head>
 <body>
     {% block content %}
         <div class="navigation">
+{#            <form action=""></form>#}
             <h1>欢迎{{ username }}</h1>
             <textarea style="background: transparent" name="feedback" id="feedback" cols="30" rows="10">
 
             </textarea>
-        <button type="button" class="btn btn-primary" id="feedback_submit">提交意见</button>
+        <button type="button" class="btn btn-primary" id="feedback_submit" onclick="feedback()">提交意见</button>
         </div>
-    {% endblock %}
-    <script>
-        $("#feedback_submit").click(function () {
-            inner_info = $('#feedback').innerText()
+            <script>window.jQuery || document.write("<script src='{% static "js/jquery-1.11.0.min.js" %}'><\/script>")</script>
 
-            htmlobj=$.ajax({method:'get',url:"/feedback",async:false});
-        })
-    </script>
+<script>
+        function feedback() {
+            $.get("/feedback/",{
+                "feedback_value":document.getElementById('feedback').value,
+            },function (ret) {
+                alert('已成功吐槽！')
+            })
+        }
+</script>
+    {% endblock %}
+
 </body>
 </html>

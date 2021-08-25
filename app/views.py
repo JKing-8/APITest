@@ -5,8 +5,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import auth
 
-
 # Create your views here.
+from app.models import DBFeedback
+
 
 @login_required(login_url='/login')
 def home(request):
@@ -37,9 +38,9 @@ def register_user(request):
         try:
             User.objects.create_user(username=username, password=passwd)
             User.save()
-            return HttpResponse('<script>alert(注册成功)</script>')
+            return HttpResponse('注册成功')
         except:
-            return HttpResponse('<script>alert(注册失败，用户名可能重复了！）</script>')
+            return HttpResponse('用户名重复或违反规定')
     else:
         return redirect('/login')
 
@@ -47,3 +48,14 @@ def register_user(request):
 def logout(request):
     auth.logout(request)
     return redirect('/login')
+
+
+def feedback(request):
+    if request.method == 'GET':
+        data = request.GET['feedback_value']
+        DBFeedback.objects.create(user=request.user.username, text=data)
+        return HttpResponseRedirect('', {data: data})
+
+
+def help_doc(request):
+    return render(request, 'help.html')
