@@ -1,12 +1,12 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib import auth
 
 # Create your views here.
-from app.models import DBFeedback
+from app.models import DBFeedback, DBLinkAll
 
 
 @login_required(login_url='/login')
@@ -54,8 +54,26 @@ def feedback(request):
     if request.method == 'GET':
         data = request.GET['feedback_value']
         DBFeedback.objects.create(user=request.user.username, text=data)
-        return HttpResponseRedirect('', {data: data})
+        return HttpResponseRedirect('')
 
 
 def help_doc(request):
     return render(request, 'help.html')
+
+
+def link_all(request):
+    data = DBLinkAll.objects.all()
+    return render(request, 'index.html', {'data': data})
+
+
+def child(request, eid, oid):
+    res = child_json(eid)
+    print(eid)
+    return render(request, eid, res)
+
+
+def child_json(eid):
+    if eid == 'index.html':
+        date = DBLinkAll.objects.all()
+        res = {"hrefs": date}
+        return res

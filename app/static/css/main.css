@@ -12,14 +12,30 @@
 .logo h1{
     margin: 0 auto;
 }
+
+.linkall {
+margin: 100px auto;
+    /*border: darkgreen;*/
+    text-align: center;
+    color: #d54f8c;
+    width: 60%;
+}
+
+.linkall h3{
+color: #d54f8c
+}
+
 .navigation{
-    margin: 100px auto;
     width: 200px;
     text-align: left;
+    position: absolute;
+    bottom: 24px;
+    right: 99px;
 }
 .navigation h3{color: #d54f8c}
-.navigation .navigation{
-
+.navigation textarea{
+border: darkgreen 2px solid;
+    border-radius: 10px;
 }
 
 .login-info{
@@ -58,4 +74,21 @@
     border-radius: 5px;
     padding-left: 10px ;
     box-shadow: 4px 4px 9px #fff3cd;
+
+}
+.help-list{
+    height: 80%;
+    width: 500px;
+    border-right: 3px solid #d54f8c;
+    text-align: right;
+}
+.help-list li{
+    margin: 40px 16px;
+}
+.help-list a{
+    color: white;
+    text-decoration: none;
+}
+.help-list a:hover{
+    color: #d54f8c;
 }

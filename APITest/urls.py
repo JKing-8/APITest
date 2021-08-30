@@ -25,5 +25,6 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('feedback/', views.feedback, name='feedback'),
     path('help/', views.help_doc, name='feedback'),
+    re_path(r"^child/(?P<eid>.+)/(?P<oid>.*)/(?P<ooid>.*)/$",views.child),
 
 ]

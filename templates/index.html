@@ -11,23 +11,37 @@
 </head>
 <body>
     {% block content %}
+
+        <div class="linkall">
+            <h3>欢迎使用传送门</h3>
+{#            <button type="button" class="btn btn-primary" id="get-link-all" onclick="get_link_all()">获取列表</button>#}
+        <ul>
+            {% for data in hrefs %}
+                <li><a href="{{ data.href }}">{{ data.name }}</a></li>
+            {% endfor %}
+        </ul>
+        </div>
+
+
         <div class="navigation">
 {#            <form action=""></form>#}
-            <h1>欢迎{{ username }}</h1>
-            <textarea style="background: transparent" name="feedback" id="feedback" cols="30" rows="10">
-
-            </textarea>
+            <h3>欢迎吐槽</h3>
+            <textarea style="background: transparent" name="feedback" id="feedback" cols="30" rows="10" placeholder="匿名吐槽，畅所欲言"></textarea>
         <button type="button" class="btn btn-primary" id="feedback_submit" onclick="feedback()">提交意见</button>
         </div>
             <script>window.jQuery || document.write("<script src='{% static "js/jquery-1.11.0.min.js" %}'><\/script>")</script>
 
 <script>
+
         function feedback() {
             $.get("/feedback/",{
                 "feedback_value":document.getElementById('feedback').value,
             },function (ret) {
                 alert('已成功吐槽！')
             })
+        }
+        function get_link_all() {
+            $.get('/linkall/')
         }
 </script>
     {% endblock %}
