@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Project</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+    项目列表
+{% endblock %}
 
-</body>
-</html>
+{% block style %}
+    <style>
+    ul li a{
+        text-decoration: none;
+        padding-right: 100px;
+    }
+    ul li{
+        width: 300px;
+        border: #d54f8c 1px solid;
+        text-align: center;
+    }
+
+    ul{
+        display: block;
+        text-align: center;
+        margin: 100px auto;
+    }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div>
+    <ul >
+        {% for list in data %}
+            <li><a href="{{ list.href }}">{{ list.name }}</a>
+                <div class="btn">                        <button type="button" class="btn btn-primary">修改</button>
+                        <button type="button" class="btn btn-danger">删除</button></div>
+            </li>
+
+
+        {% endfor %}
+    </ul>
+    </div>
+{% endblock %}
+

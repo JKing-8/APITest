@@ -12,7 +12,8 @@ from app.models import DBFeedback, DBLinkAll
 @login_required(login_url='/login')
 def home(request):
     # if request.user.is_authenticated:
-    return render(request, 'index.html', {'user': User.username})
+    data = DBLinkAll.objects.all()
+    return render(request, 'index.html', {'user': User.username, "data": data})
     # else:
     #     return redirect('/login')
 
@@ -77,3 +78,13 @@ def child_json(eid):
         date = DBLinkAll.objects.all()
         res = {"hrefs": date}
         return res
+
+
+def project_list(request):
+    data = DBLinkAll.objects.all()
+    return render(request, 'project.html', {'data': data})
+
+
+def del_project(request, id):
+    DBLinkAll.objects.get(id=id).delete()
+    return redirect('project_list')

@@ -1,50 +1,62 @@
-<!doctype html>
-<html lang="en">
 {% extends 'base.html' %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% block title %}
+主页
+{% endblock %}
+{% block style %}
+    <style>
+
+    </style>
+{% endblock %}
     {% load static %}
-    <title>Document</title>
-</head>
-<body>
     {% block content %}
 
         <div class="linkall">
             <h3>欢迎使用传送门</h3>
 {#            <button type="button" class="btn btn-primary" id="get-link-all" onclick="get_link_all()">获取列表</button>#}
-        <ul>
-            {% for data in hrefs %}
-                <li><a href="{{ data.href }}">{{ data.name }}</a></li>
-            {% endfor %}
-        </ul>
-        </div>
+    <table>
+        <th>链接</th>
+        <th>修改操作</th>
+        <th>删除操作</th>
+        {% for list in data %}
+            <tr>
+                <td><a href="{{ list.href }}">{{ list.name }}</a></td>
+                <td>
+                  <div class="btn">
+                      <a class="btn btn-primary" href="">修改</a>
+                      <a class="btn btn-danger" href="{% url 'del_project' list.id %}">删除</a>
+                  </div>
+                </td>
 
+            </tr>
+        {% endfor %}
+    </table>
 
         <div class="navigation">
 {#            <form action=""></form>#}
             <h3>欢迎吐槽</h3>
-            <textarea style="background: transparent" name="feedback" id="feedback" cols="30" rows="10" placeholder="匿名吐槽，畅所欲言"></textarea>
+            <label for="feedback"></label><textarea style="background: transparent" name="feedback" id="feedback" cols="30" rows="10" placeholder="匿名吐槽，畅所欲言"></textarea>
         <button type="button" class="btn btn-primary" id="feedback_submit" onclick="feedback()">提交意见</button>
         </div>
-            <script>window.jQuery || document.write("<script src='{% static "js/jquery-1.11.0.min.js" %}'><\/script>")</script>
-
+        </div>
+            {% endblock %}
 <script>
-
+        window.jQuery || document.write("<script src='{% static "js/jquery-1.11.0.min.js" %}'><\/script>")
         function feedback() {
             $.get("/feedback/",{
                 "feedback_value":document.getElementById('feedback').value,
-            },function (ret) {
+            },function () {
                 alert('已成功吐槽！')
             })
         }
         function get_link_all() {
             $.get('/linkall/')
         }
-</script>
-    {% endblock %}
+        function del_prolist(id){
+            del_status = confirm("确定要删除此项目吗")
+            if (del_status){
+                $.get('',{'id':id},function () {
+                    document.location.reload()
+                })
+        }}
 
-</body>
-</html>
+</script>
