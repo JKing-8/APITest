@@ -88,3 +88,20 @@ def project_list(request):
 def del_project(request, id):
     DBLinkAll.objects.get(id=id).delete()
     return redirect('project_list')
+
+
+def add_project(request):
+    project_name = request.GET['project_name']
+    DBLinkAll.objects.create(name=project_name, href='')
+    return HttpResponse('')
+
+
+def apis(request, id):
+    project_id = id
+    return render(request, 'index.html')
+
+
+def apis_detail(request, id):
+    api_info = DBLinkAll.objects.get(id=id)
+    context = {'api_info': api_info}
+    return render(request, 'p_apis.html', context)

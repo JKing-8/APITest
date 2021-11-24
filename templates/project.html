@@ -5,37 +5,92 @@
 
 {% block style %}
     <style>
-    ul li a{
-        text-decoration: none;
-        padding-right: 100px;
-    }
-    ul li{
-        width: 300px;
-        border: #d54f8c 1px solid;
-        text-align: center;
+
+    .project_info{
+        width: 400px;
+        height: 200px;
+        margin: 0 auto;
     }
 
-    ul{
-        display: block;
-        text-align: center;
-        margin: 100px auto;
+    table{
+            margin: 50px auto;
+        color: #d54f8c;
+        }
+        table th{
+            width: 100px;
+        }
+        table tr{
+            height: 40px;
+        }
+        table .list_name{
+            width: 200px;
+
+        }
+        table .btn{
+            width: 70px;
+        }
+        table a{
+            text-decoration: none;
+        }
+    .project_create{
+        width: 400px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    .project_create input,button{
+        height: 36px;
+    }
+    .project_create h3{
+        color: white;
+    }
+    .add-new-project{
+        margin: 20px auto;
     }
     </style>
 
 {% endblock %}
 
 {% block content %}
-    <div>
-    <ul >
+
+    <div class="project_info">
+        <button type="button" class="btn btn-warning add-new-project" onclick="javascript:document.getElementById('project_create').style.display='block'">新增项目</button>
+    <table>
+        <th>链接</th>
+        <th>修改操作</th>
+        <th>删除操作</th>
         {% for list in data %}
-            <li><a href="{{ list.href }}">{{ list.name }}</a>
-                <div class="btn">                        <button type="button" class="btn btn-primary">修改</button>
-                        <button type="button" class="btn btn-danger">删除</button></div>
-            </li>
+            <tr>
+                <td class="list_name"><a href="{% url 'apis' list.id %}">{{ list.name }}</a></td>
+                <td>
+                  <div class="btn">
+                      <a class="btn btn-primary" href="">修改</a>
+                      <a class="btn btn-danger" href="{% url 'del_project' list.id %}">删除</a>
+                  </div>
+                </td>
 
-
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
     </div>
+    <div class="project_create" id="project_create" style="display: none">
+        <h3>项目名称：</h3>
+        <br>
+        <label>
+            <input type="text" placeholder="请输入项目名称" id="project_value">
+        </label>
+        <button type="button" class="btn btn-success" onclick="add_project()">确认</button>
+        <button type="button" class="btn btn-danger" onclick="javascript:document.getElementById('project_create').style.display='none'">取消</button>
+    </div>
+    <script>
+    function add_project() {
+        project_name = document.getElementById('project_value').value;
+
+        $.get('/addpro/',{
+            'project_name':project_name,
+        },function (ret) {
+            document.location.reload()
+        })
+    }
+    </script>
 {% endblock %}
 

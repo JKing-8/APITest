@@ -4,7 +4,22 @@
 {% endblock %}
 {% block style %}
     <style>
+        table{
+        margin: 50px auto;
+        }
+        table th{
+            width: 100px;
+        }
+        table tr{
+            height: 40px;
+        }
+        table .list_name{
+            width: 200px;
 
+        }
+        table .btn{
+            width: 100px;
+        }
     </style>
 {% endblock %}
     {% load static %}
@@ -19,7 +34,7 @@
         <th>删除操作</th>
         {% for list in data %}
             <tr>
-                <td><a href="{{ list.href }}">{{ list.name }}</a></td>
+                <td class="list_name"><a href="{{ list.href }}">{{ list.name }}</a></td>
                 <td>
                   <div class="btn">
                       <a class="btn btn-primary" href="">修改</a>
