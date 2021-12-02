@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 
 # Create your views here.
-from app.models import DBFeedback, DBLinkAll
+from app.models import DBFeedback, DBLinkAll, DBProject
 
 
 @login_required(login_url='/login')
@@ -40,7 +40,7 @@ def register_user(request):
             User.objects.create_user(username=username, password=passwd)
             User.save()
             return HttpResponse('注册成功')
-        except:
+        except BaseException:
             return HttpResponse('用户名重复或违反规定')
     else:
         return redirect('/login')
@@ -81,18 +81,18 @@ def child_json(eid):
 
 
 def project_list(request):
-    data = DBLinkAll.objects.all()
+    data = DBProject.objects.all()
     return render(request, 'project.html', {'data': data})
 
 
 def del_project(request, id):
-    DBLinkAll.objects.get(id=id).delete()
+    DBProject.objects.get(id=id).delete()
     return redirect('project_list')
 
 
 def add_project(request):
     project_name = request.GET['project_name']
-    DBLinkAll.objects.create(name=project_name, href='')
+    DBProject.objects.create(name=project_name,remark='',user=request.user.username,user_id='',other_user='')
     return HttpResponse('')
 
 
@@ -102,6 +102,12 @@ def apis(request, id):
 
 
 def apis_detail(request, id):
-    api_info = DBLinkAll.objects.get(id=id)
+    api_info = DBProject.objects.get(id=id)
     context = {'api_info': api_info}
     return render(request, 'p_apis.html', context)
+
+
+def save_project_set(request,id):
+    project_set = DBProject.objects.get(id=id)
+    context = {'project':project_set}
+    return render(request,'p_project_set.html', context)

@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}
+项目设置
+{% endblock %}
+
+{% block content %}
+    <div class="project_set">
+        <h3>项目名称</h3>
+        <textarea name="" id="name" cols="30" rows="10" placeholder="最多100字" maxlength="100">{{ project.name }}</textarea>
+        <h3>项目介绍</h3>
+        <textarea name="remark" id="remark" cols="30" rows="10" placeholder="最多500字" maxlength="500">{{ project.info }}</textarea>
+        <h3>管理员</h3>
+        <textarea name="other_user" id="other_user" cols="30" rows="10" placeholder="多个成员用英文逗号分格隔">{{ project.user }}</textarea>
+    </div>
+    <button type="button" class="btn btn-success" style="margin: 0 auto">Success</button>
+    <script>
+        function save() {
+            let name = document.getElementById('name').value;
+            let remark = document.getElementById('remark').value;
+            let other_user = document.getElementById('other_user').value;
+            $.get('/save_project_set/'+'{{ project.id }}',{
+                'name':name,'remark':remark,'other_user':other_user
+            },function (ret) {
+                alert('保存成功')
+            })
+        }
+    </script>
+{% endblock %}

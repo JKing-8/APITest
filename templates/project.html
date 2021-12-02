@@ -63,7 +63,7 @@
                 <td class="list_name"><a href="{% url 'apis' list.id %}">{{ list.name }}</a></td>
                 <td>
                   <div class="btn">
-                      <a class="btn btn-primary" href="">修改</a>
+                      <a class="btn btn-primary" href="{% url 'save_project_set' list.id %}">修改</a>
                       <a class="btn btn-danger" href="{% url 'del_project' list.id %}">删除</a>
                   </div>
                 </td>

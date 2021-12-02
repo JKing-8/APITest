@@ -26,9 +26,11 @@ urlpatterns = [
     path('feedback/', views.feedback, name='feedback'),
     path('help/', views.help_doc, name='feedback'),
     re_path(r"^child/(?P<eid>.+)/(?P<oid>.*)/(?P<ooid>.*)/$", views.child),
-    path('prolist/',views.project_list,name='project_list'),
-    path('delpro/<int:id>/',views.del_project,name='del_project'),
-    path('addpro/',views.add_project,name='add_project'),
-    path('apis/<int:id>',views.apis_detail,name='apis')
+    path('prolist/', views.project_list, name='project_list'),
+    path('delpro/<int:id>/', views.del_project, name='del_project'),
+    path('addpro/', views.add_project, name='add_project'),
+    path('apis/<int:id>', views.apis_detail, name='apis'),
+    path('projectset/<int:id>',views.save_project_set,name='save_project_set'),
+
 
 ]
