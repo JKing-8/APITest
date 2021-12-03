@@ -119,5 +119,5 @@ class DiffExpectVsXsjResult:
 
 
 if __name__ == '__main__':
-    diff = DiffExpectVsXsjResult()
-    result = diff.diff_event('view', view)
+    DiffExpectVsXsjResult()
+    result = DiffExpectVsXsjResult().diff_event('view', view)

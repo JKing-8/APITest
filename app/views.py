@@ -37,8 +37,8 @@ def register_user(request):
         username = request.POST['inputUsername']
         passwd = request.POST['inputPassword']
         try:
-            User.objects.create_user(username=username, password=passwd)
-            User.save()
+            user_new = User.objects.create_user(username=username, password=passwd)
+            user_new.save()
             return HttpResponse('注册成功')
         except BaseException:
             return HttpResponse('用户名重复或违反规定')

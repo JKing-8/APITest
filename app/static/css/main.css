@@ -40,7 +40,6 @@ border: darkgreen 2px solid;
 .login-info{
     margin: auto;
     /*width: 30%;*/
-    color: yellow;
     height: calc(100% - 50px);
     display: flex;
     justify-content: center;
