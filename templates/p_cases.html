@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title  %}
+接口详情
+{% endblock %}
+{% block style %}
+    <style>
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1 style="color: white;margin: 0 auto;display: block">接口库</h1>
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'app:project_list' %}">项目列表</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'app:save_project_set' project.id %}">项目设置</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">用例库</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link ">接口库</a>
+  </li>
+</ul>
+
+{% endblock %}

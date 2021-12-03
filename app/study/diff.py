@@ -1,4 +1,5 @@
 from xsj_event_info import *
+
 base_expect = {'os',
                'os_version',
                'browser',
@@ -29,7 +30,7 @@ base_expect = {'os',
                'is_video_charged',
                'pic_plan',
                'video_plan',
-               'user_type ',
+               'user_type',
                'act_layer',
                'user_level',
                }
@@ -93,29 +94,30 @@ class DiffExpectVsXsjResult:
         self.event_is_order = self.base_set.union(event_is_order)
         self.event_is_search = self.base_set.union(event_is_search)
 
-    def diff_view(self, data):
+    def diff_event(self, method, data):
         data = set(data.keys())
-        diff_data = self.event_is_view.difference(data)
-        return diff_data
-
-    def diff_download(self, data):
-        data = set(data.keys())
-        diff_data = self.event_is_download.difference(data)
-        return diff_data
-
-    def diff_order(self, data):
-        data = set(data.keys())
-        diff_data = self.event_is_order.difference(data)
-        return diff_data
-
-    def diff_search(self, data):
-        data = set(data.keys())
-        diff_data = self.event_is_search.difference(data)
-        return diff_data
+        if method == 'download':
+            diff_data1 = self.event_is_download.difference(data)
+            diff_data2 = data.difference(self.event_is_download)
+        if method == 'view':
+            diff_data1 = self.event_is_view.difference(data)
+            diff_data2 = data.difference(self.event_is_view)
+        if method == 'search':
+            diff_data1 = self.event_is_search.difference(data)
+            diff_data2 = data.difference(self.event_is_search)
+        if method == 'order':
+            diff_data1 = self.event_is_order.difference(data)
+            diff_data2 = data.difference(self.event_is_order)
+        try:
+            print(f'xsj相比预期数据少了{diff_data1}')
+            print(f'xsj相比预期数据多了{diff_data2}')
+            diff_data = diff_data1.union(diff_data2)
+            print(f'预期数据与xsj结果数差异{diff_data}')
+            return diff_data
+        except Exception as e:
+            print(f'error------->{e}------->检查传参是否正确')
 
 
 if __name__ == '__main__':
     diff = DiffExpectVsXsjResult()
-    result = diff.diff_order(view)
-    print(result)
-
+    result = diff.diff_event('view', view)

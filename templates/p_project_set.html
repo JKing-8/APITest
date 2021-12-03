@@ -13,7 +13,7 @@
         <h3>管理员</h3>
         <textarea name="other_user" id="other_user" cols="30" rows="10" placeholder="多个成员用英文逗号分格隔">{{ project.user }}</textarea>
     </div>
-    <button type="button" class="btn btn-success" style="margin: 0 auto">Success</button>
+    <button type="button" class="btn btn-success" style="margin: 0 auto" onclick="save()">Success</button>
     <script>
         function save() {
             let name = document.getElementById('name').value;

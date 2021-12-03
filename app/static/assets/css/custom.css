@@ -12,7 +12,7 @@
 /*----------------page-wrapper----------------*/
 .page-wrapper{
     height: 100vh;
-    background: url("../img/beijing.jpg");
+    background: url("../img/beijing.jpg") repeat;
 }
 
 /*----------------toggeled sidebar----------------*/

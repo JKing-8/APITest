@@ -87,12 +87,12 @@ def project_list(request):
 
 def del_project(request, id):
     DBProject.objects.get(id=id).delete()
-    return redirect('project_list')
+    return redirect('app:project_list')
 
 
 def add_project(request):
     project_name = request.GET['project_name']
-    DBProject.objects.create(name=project_name,remark='',user=request.user.username,user_id='',other_user='')
+    DBProject.objects.create(name=project_name, remark='', user=request.user.username, user_id='', other_user='')
     return HttpResponse('')
 
 
@@ -107,7 +107,16 @@ def apis_detail(request, id):
     return render(request, 'p_apis.html', context)
 
 
-def save_project_set(request,id):
+def get_project_set(request, id):
     project_set = DBProject.objects.get(id=id)
-    context = {'project':project_set}
-    return render(request,'p_project_set.html', context)
+    context = {'project': project_set}
+    return render(request, 'p_project_set.html', context)
+
+
+def save_project_set(request, id):
+    project_set = DBProject.objects.filter(id=id)
+    name = request.GET['name']
+    remark = request.GET['remark']
+    other_user = request.GET['other_user']
+    project_set.update(name=name, remark=remark, other_user=other_user)
+    return HttpResponse('')
