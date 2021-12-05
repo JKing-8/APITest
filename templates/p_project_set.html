@@ -19,7 +19,7 @@
             let name = document.getElementById('name').value;
             let remark = document.getElementById('remark').value;
             let other_user = document.getElementById('other_user').value;
-            $.get('/save_project_set/'+'{{ project.id }}',{
+            $.get('/get_project_set/'+'{{ project.id }}',{
                 'name':name,'remark':remark,'other_user':other_user
             },function (ret) {
                 alert('保存成功')

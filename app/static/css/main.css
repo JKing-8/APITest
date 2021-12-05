@@ -29,11 +29,11 @@ color: #d54f8c
     text-align: left;
     position: absolute;
     bottom: 24px;
-    right: 99px;
+    right: 100px;
 }
 .navigation h3{color: #d54f8c}
 .navigation textarea{
-border: darkgreen 2px solid;
+border: darkgreen 1px solid;
     border-radius: 10px;
 }
 

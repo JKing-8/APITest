@@ -15,13 +15,13 @@
     <a class="nav-link active" aria-current="page" href="{% url 'app:project_list' %}">项目列表</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'app:save_project_set' project.id %}">项目设置</a>
+    <a class="nav-link" href="{% url 'app:get_project_set' project.id %}">项目设置</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">用例库</a>
+    <a class="nav-link disabled" href="{% url 'app:apis' project.id %}">用例库</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link ">接口库</a>
+    <a class="nav-link " href="{% url 'app:apis' project.id %}">接口库</a>
   </li>
 </ul>
 

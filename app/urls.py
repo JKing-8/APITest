@@ -15,4 +15,7 @@ urlpatterns = [
     path('apis/<int:id>', views.apis_detail, name='apis'),
     path('projectset/<int:id>', views.get_project_set, name='get_project_set'),
     path('projectsave/<int:id>',views.save_project_set,name='save_project_set'),
+    path('cases/<int:id>',views.get_cases,name='get_cases'),
+    path('addapi/<int:id>', views.add_api, name='add_api'),
+    path('delapi/<int:id>',views.del_api,name='del_api')
 ]

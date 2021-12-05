@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 
 # Create your views here.
-from app.models import DBFeedback, DBLinkAll, DBProject
+from app.models import DBFeedback, DBLinkAll, DBProject, DBApis
 
 
 @login_required(login_url='/login')
@@ -96,14 +96,10 @@ def add_project(request):
     return HttpResponse('')
 
 
-def apis(request, id):
-    project_id = id
-    return render(request, 'index.html')
-
-
 def apis_detail(request, id):
     api_info = DBProject.objects.get(id=id)
-    context = {'api_info': api_info}
+    api_list = DBApis.objects.filter(project_id=id)
+    context = {'api_info': api_info, 'api_list': api_list}
     return render(request, 'p_apis.html', context)
 
 
@@ -120,3 +116,20 @@ def save_project_set(request, id):
     other_user = request.GET['other_user']
     project_set.update(name=name, remark=remark, other_user=other_user)
     return HttpResponse('')
+
+
+def get_cases(request, id):
+    case_page = DBProject.objects.get(id=id)
+    return render(request, 'p_cases.html' ,{'project':case_page})
+
+
+def add_api(request,id):
+    DBApis.objects.create(project_id=id)
+    return HttpResponseRedirect(f'/apis/{id}')
+
+
+def del_api(request,id):
+    del_api = DBApis.objects.get(id=id)
+    del_api_projetc_id = del_api.project_id
+    del_api.delete()
+    return HttpResponseRedirect(f'/apis/{del_api_projetc_id}')

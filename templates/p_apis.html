@@ -5,6 +5,12 @@
 {% endblock %}
 {% block style %}
     <style>
+.button-part{
+   position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+}
     </style>
 {% endblock %}
 
@@ -15,14 +21,77 @@
     <a class="nav-link active" aria-current="page" href="{% url 'app:project_list' %}">项目列表</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">项目设置</a>
+    <a class="nav-link" href="{% url 'app:get_project_set' api_info.id %}">项目设置</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">用例库</a>
+    <a class="nav-link" href="{% url 'app:get_cases' api_info.id %}">用例库</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled">接口库</a>
   </li>
 </ul>
 
+
+<table class="table caption-top" style="text-align: center">
+  <caption>接口列表</caption>
+  <thead>
+    <tr>
+      <th scope="col">编号</th>
+      <th scope="col">项目名称</th>
+      <th scope="col">url</th>
+      <th scope="col">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for case in api_list %}
+    <tr class="{% cycle 'table-success' 'table-danger' %}">
+                <td>{{ case.id }}</td>
+                <td>{{ case.name }}</td>
+                <td>{{ case.api_url }}</td>
+                <td>
+                   <div class="btn">
+                      <a class="btn btn-primary" href="{% url 'app:get_project_set' case.id %}">调试</a>
+                      <button type="button" class="btn btn-secondary">备注</button>
+                      <button type="button" class="btn btn-secondary">复制</button>
+                      <button type="button" class="btn btn-info">异常值测试</button>
+                      <a class="btn btn-danger" href="{% url 'app:del_api' case.id %}">删除</a>
+                  </div>
+                </td>
+            </tr>
+          {% endfor %}
+  </tbody>
+
+</table>
+
+<div class="button-part">
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+      <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck1"onclick="document.location.href='{% url "app:add_api" api_info.id%}'">新增接口</label>
+
+      <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck2">全局请求头</label>
+
+      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck3">全局域名</label>
+
+      <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck4">接口文档导入</label>
+
+      <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck3" >抓包导入</label>
+      <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck6">加密算法</label>
+          <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck7">登录态接口3</label>
+    </div>
+</div>
+    <div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title">备注</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+    <a href="#" class="btn btn-primary">Button</a>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+</div>
 {% endblock %}
