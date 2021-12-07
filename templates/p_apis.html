@@ -108,10 +108,15 @@
     <button class="btn btn-primary" onclick="">保存</button>
     <button class="btn btn-primary" onclick="document.getElementById('remark-info').style.display='none'">取消</button>
   </div>
+
 </div>
     <script>
     function add_api_remark() {
-        $.get('/')
+        validationTextarea = $('#validationTextarea')
+        remark_data = validationTextarea.value
+        $.get('/addapiremark/{{ api_list.id }}',function () {
+            
+        },{"remark_data":remark_data})
     }
     </script>
 {% endblock %}
