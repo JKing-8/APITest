@@ -17,5 +17,7 @@ urlpatterns = [
     path('projectsave/<int:id>',views.save_project_set,name='save_project_set'),
     path('cases/<int:id>',views.get_cases,name='get_cases'),
     path('addapi/<int:id>', views.add_api, name='add_api'),
-    path('delapi/<int:id>',views.del_api,name='del_api')
+    path('delapi/<int:id>',views.del_api,name='del_api'),
+    path('addapiremark/<int:id>',views.add_api_remark,name='add_api_remark'),
+
 ]

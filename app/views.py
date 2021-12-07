@@ -133,3 +133,9 @@ def del_api(request,id):
     del_api_projetc_id = del_api.project_id
     del_api.delete()
     return HttpResponseRedirect(f'/apis/{del_api_projetc_id}')
+
+
+def add_api_remark(request,id):
+    value = request.GET['des']
+    add_api_remark = DBApis.objects.filter(id=id).update(des=value)
+

@@ -1,3 +1,6 @@
+body{
+    background: #f0efee url("../assets/img/beijing.jpg") repeat;
+}
 .logo{
     color: darkgreen;
     text-align: center;
