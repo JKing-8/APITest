@@ -114,9 +114,9 @@
     function add_api_remark() {
         validationTextarea = $('#validationTextarea')
         remark_data = validationTextarea.value
-        $.get('/addapiremark/{{ api_list.id }}',function () {
+        $.get('/addapiremark/{{ api_list.id }}',{"remark_data":remark_data}),function () {
             
-        },{"remark_data":remark_data})
+        }
     }
     </script>
 {% endblock %}
